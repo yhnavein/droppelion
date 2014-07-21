@@ -1,0 +1,9 @@
+{
+  "name": "droppelion",
+  "version": "0.0.1",
+  "dependencies": {
+    "angular": "latest",
+    "jquery": "1.*",
+    "bootstrap": "3.*"
+  }
+}

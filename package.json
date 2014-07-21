@@ -1,0 +1,17 @@
+{
+  "name": "droppelion",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js",
+    "test": "karma start karma.conf.js --single-run --browsers PhantomJS"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "karma": "latest",
+    "karma-jasmine": "latest",
+    "karma-chrome-launcher": "latest",
+    "karma-phantomjs-launcher": "latest"
+  }
+}
