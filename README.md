@@ -13,7 +13,11 @@ git clone https://github.com/yhnavein/droppelion.git
 cd droppelion
 npm install -d # -msvs_version=2013 if you have only VS2013 installed
 bower install -d
-node app
+
+#Running web server
+npm install -g node-static
+static -p 8989
+#Navigate to http://localhost:8989/
 ```
 
 
