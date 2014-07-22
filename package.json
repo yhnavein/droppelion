@@ -10,6 +10,8 @@
   },
   "devDependencies": {
     "karma": "latest",
+    "grunt": "latest",
+    "grunt-contrib-less": "latest",
     "karma-jasmine": "latest",
     "karma-chrome-launcher": "latest",
     "karma-phantomjs-launcher": "latest"
