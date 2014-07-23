@@ -1,4 +1,4 @@
-<div class="droppelion" ng-class="{'pure-active': focused}">
+<div class="droppelion" ng-class="{'drop-active': focused}">
   <div class="search-field">
     <input type="text" autocomplete="off" id="{{controlId}}" class="form-control" ng-model="itemName" placeholder="{{prompt}}" ng-keydown="keyPressed($event)" ng-focus="focused = true" ng-blur="blur()" ng-change="changedSearch()"/>
     <a href="#" class="loading" ng-show="loading"></a>

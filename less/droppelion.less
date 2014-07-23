@@ -64,7 +64,7 @@
       width: 24px;
       height: 13px;
       font-size: 1px;
-      background: url('../img/loading1.gif') right top no-repeat;
+      background: url('../fb-loading.gif') right top no-repeat;
     }
   }
 
@@ -91,6 +91,7 @@
         padding: 5px 6px;
         margin: 0;
         list-style: none;
+        text-align: left;
         cursor: pointer;
 
         &.highlighted {
@@ -155,7 +156,7 @@
     .droppelion-drop { display: none; }
   }
 
-  &.pure-active {
+  &.drop-active {
     @color: @input-border-focus;
     @color-rgba: rgba(red(@color), green(@color), blue(@color), .6);
     border-color: @color;

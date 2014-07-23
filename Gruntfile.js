@@ -12,9 +12,15 @@ module.exports = function(grunt) {
       }
     },
 
+    watch: {
+      files: "less/*",
+      tasks: ["less:dev"]
+    }
+
   });
 
   grunt.loadNpmTasks('grunt-contrib-less');
+  grunt.loadNpmTasks('grunt-contrib-watch');
 
   grunt.registerTask('default', ['less:dev']);
 };

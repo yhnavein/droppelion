@@ -8,4 +8,8 @@ app.controller('MainCtrl', function($scope, $http) {
 
     self.refreshData();
   };
+
+  $scope.countryPretty = function() {
+    return JSON.stringify($scope.country, null, ' ');
+  };
 });

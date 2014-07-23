@@ -32,9 +32,16 @@
       </div>
 
       <div class="jumbotron">
-        <h1>See it in action</h1>
+        <h2>See it in action</h2>
 
         <droppelion endpoint="'/countries.json'" control-id="countryId" prompt="Prompt text..." title="name" item="country" on-select="onItemSelected()" required />
+      </div>
+
+      <div>
+        Selected country:
+        <code>
+          {{countryPretty()}}
+        </code>
       </div>
 
       <div class="row marketing">

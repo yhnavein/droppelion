@@ -76,7 +76,7 @@ app.directive('droppelion', function($timeout, $http, $filter) {
 
       scope.handleSelection = function(selectedItem) {
         if(selectedItem == null){
-          selectedItem = scope.items[scope.current];
+          selectedItem = scope.filteredItems[scope.current];
         }
         scope.item = selectedItem;
         scope.itemName = selectedItem[scope.title];
@@ -101,7 +101,7 @@ app.directive('droppelion', function($timeout, $http, $filter) {
         self.makeSearchRequest(scope.itemName);
       };
       scope.keyPressed = function(e) {
-        if(scope.items == null)
+        if(scope.filteredItems == null)
           return;
 
         if(e.keyCode === 13){ //ENTER
@@ -114,12 +114,12 @@ app.directive('droppelion', function($timeout, $http, $filter) {
         }
         if(e.keyCode === 38) {  //UP
           if(scope.current === 0)
-            scope.current = scope.items.length-1;
+            scope.current = scope.filteredItems.length-1;
           else
             scope.current--;
         }
         if(e.keyCode === 40) {//DOWN
-          if(scope.current === scope.items.length-1)
+          if(scope.current === scope.filteredItems.length-1)
             scope.current = 0;
           else
             scope.current++;
