@@ -4,11 +4,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
+    <meta name="description" content="Droppelion - Sophisticated Typeahead / DropDown written in AngularJS">
     <meta name ="author" content="Piotrek Dabrowski">
     <link rel="icon" href="favicon.ico">
 
-    <title>Narrow Jumbotron Template for Bootstrap</title>
+    <title>Droppelion Demo</title>
 
     <!-- Bootstrap core CSS -->
     <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -28,13 +28,13 @@
           <li><a href="#">About</a></li>
           <li><a href="#">Contact</a></li>
         </ul>
-        <h3 class="text-muted">Project name</h3>
+        <h3 class="text-muted">Droppelion</h3>
       </div>
 
       <div class="jumbotron">
         <h1>See it in action</h1>
 
-        <droppelion  endpoint="'/product'" control-id="prodId" prompt="Prompt text..." title="name" item="country" on-select="onItemSelected()" required />
+        <droppelion endpoint="'/countries.json'" control-id="countryId" prompt="Prompt text..." title="name" item="country" on-select="onItemSelected()" required />
       </div>
 
       <div class="row marketing">
@@ -62,7 +62,7 @@
       </div>
 
       <div class="footer">
-        <p>&copy; Company 2014</p>
+        <p>&copy; PureDev 2014</p>
       </div>
 
     </div> <!-- /container -->
