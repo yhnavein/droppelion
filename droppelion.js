@@ -70,8 +70,10 @@ app.directive('droppelion', function($timeout, $http, $filter) {
       }
 
       scope.blur = function() {
-        scope.focused = false;
-        scope.selected = true;
+        $timeout(function(){
+          scope.focused = false;
+          scope.selected = true;
+        }, 100);
       };
 
       scope.handleSelection = function(selectedItem) {
