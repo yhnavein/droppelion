@@ -12,4 +12,5 @@ app.controller('MainCtrl', function($scope, $http) {
   $scope.countryPretty = function() {
     return JSON.stringify($scope.country, null, ' ');
   };
+
 });

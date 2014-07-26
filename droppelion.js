@@ -9,6 +9,7 @@ app.directive('droppelion', function($timeout, $http, $filter) {
     scope: {
       dynamic: '=',
       endpoint: '=',
+      traverse: '@',
       prompt: '@',
       item: '=',
       controlId: '@',
@@ -22,13 +23,26 @@ app.directive('droppelion', function($timeout, $http, $filter) {
       if(typeof attrs.dynamic === 'string')
         attrs.dynamic = attrs.dynamic.toLowerCase() === 'true';
 
-      scope.$watch('itemName', function() {
-        scope.filteredItems = $filter('filter')(scope.items, scope.itemName);
-      });
+      if(attrs.dynamic){
+        scope.$watch('itemName', function() {
+          scope.filteredItems = $filter('filter')(scope.items, scope.itemName);
+        });
+      }
 
       self.getItems = function(data) {
-        scope.items = data;
+        var dataToShow = (scope.traverse ? data[scope.traverse] : data);
+        scope.items = dataToShow;
         scope.loading = false;
+        scope.selected = false;
+        scope.filteredItems = scope.items;
+      };
+
+      self.logQueryError = function(err) {
+        console.error(err);
+        scope.items = [];
+        scope.loading = false;
+        scope.selected = true;
+        scope.filteredItems = scope.items;
       };
 
       self.makeSearchRequest = function(query) {
@@ -48,12 +62,7 @@ app.directive('droppelion', function($timeout, $http, $filter) {
           scope.loading = true;
           $http.get(scope.endpoint, {params: {q: query}})
             .success(self.getItems)
-            .error(function(e) {
-              console.error(e);
-              scope.items = [];
-              scope.selected = true;
-              scope.loading = false;
-            });
+            .error(self.logQueryError);
         }, 200);
       };
 
@@ -61,12 +70,7 @@ app.directive('droppelion', function($timeout, $http, $filter) {
         scope.loading = true;
         $http.get(scope.endpoint)
           .success(self.getItems)
-          .error(function(e) {
-            console.error(e);
-            scope.items = [];
-            scope.selected = true;
-            scope.loading = false;
-          });
+          .error(self.logQueryError);
       }
 
       scope.blur = function() {
@@ -120,7 +124,7 @@ app.directive('droppelion', function($timeout, $http, $filter) {
           else
             scope.current--;
         }
-        if(e.keyCode === 40) {//DOWN
+        else if(e.keyCode === 40) {//DOWN
           if(scope.current === scope.filteredItems.length-1)
             scope.current = 0;
           else

@@ -34,7 +34,7 @@
       <div class="jumbotron">
         <h2>See it in action</h2>
 
-        <droppelion endpoint="'/countries.json'" control-id="countryId" prompt="Prompt text..." title="name" item="country" on-select="onItemSelected()" required />
+        <droppelion endpoint="'https://api.github.com/search/users'" traverse="items" control-id="countryId" prompt="Prompt text..." title="login" item="country" on-select="onItemSelected()" required />
       </div>
 
       <div>
