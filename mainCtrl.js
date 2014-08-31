@@ -10,7 +10,11 @@ app.controller('MainCtrl', function($scope, $http) {
   };
 
   $scope.countryPretty = function() {
-    return JSON.stringify($scope.country, null, ' ');
+    return JSON.stringify($scope.country, null, 2);
+  };
+
+  $scope.onItemSelected = function() {
+    console.log('Item selection callback!');
   };
 
 });

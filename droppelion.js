@@ -1,7 +1,7 @@
 /*global console:false, topojson:false, queue:false, d3:false */
 var app = angular.module('droppelion', []);
 
-app.directive('droppelion', function($timeout, $http, $filter) {
+app.directive('droppelion', function($timeout, $http, $filter, $q) {
   return {
     restrict: 'E',
     transclude: true,
@@ -29,25 +29,37 @@ app.directive('droppelion', function($timeout, $http, $filter) {
         });
       }
 
+      self.hideDropDown = function() {
+        self.cancelActiveRequest();
+        scope.loading = false;
+        scope.dropDownVisible = false;
+        scope.filteredItems = [];
+      };
+
+      self.cancelActiveRequest = function() {
+        if(self.canceler)
+          self.canceler.resolve();
+      }
+
       self.getItems = function(data) {
         var dataToShow = (scope.traverse ? data[scope.traverse] : data);
         scope.items = dataToShow;
         scope.loading = false;
-        scope.selected = false;
+        scope.dropDownVisible = true;
         scope.filteredItems = scope.items;
       };
 
       self.logQueryError = function(err) {
+        if(err == null)
+          return; //request was cancelled.
+
         console.error(err);
-        scope.items = [];
-        scope.loading = false;
-        scope.selected = true;
-        scope.filteredItems = scope.items;
+        self.hideDropDown();
       };
 
       self.makeSearchRequest = function(query) {
         if(!query || query.length < 2){
-          scope.selected = true;
+          self.hideDropDown();
 
           if(self.searchTimeout != null)
             $timeout.cancel(self.searchTimeout);
@@ -60,7 +72,11 @@ app.directive('droppelion', function($timeout, $http, $filter) {
 
         self.searchTimeout = $timeout(function() {
           scope.loading = true;
-          $http.get(scope.endpoint, {params: {q: query}})
+
+          self.cancelActiveRequest();
+
+          self.canceler = $q.defer();
+          $http.get(scope.endpoint, {params: {q: query}, timeout: self.canceler.promise})
             .success(self.getItems)
             .error(self.logQueryError);
         }, 200);
@@ -76,7 +92,7 @@ app.directive('droppelion', function($timeout, $http, $filter) {
       scope.blur = function() {
         $timeout(function(){
           scope.focused = false;
-          scope.selected = true;
+          self.hideDropDown();
         }, 100);
       };
 
@@ -84,16 +100,16 @@ app.directive('droppelion', function($timeout, $http, $filter) {
         if(selectedItem == null){
           selectedItem = scope.filteredItems[scope.current];
         }
+        console.log('Sel item: ' + selectedItem);
+        console.log('Current ' + scope.current);
         scope.item = selectedItem;
         scope.itemName = selectedItem[scope.title];
         scope.current = 0;
-        scope.selected = true;
-        $timeout(function() {
-          scope.onSelect();
-        }, 200);
+        self.hideDropDown();
+        scope.onSelect(selectedItem);
       };
       scope.current = 0;
-      scope.selected = true; // hides the list initially
+      scope.dropDownVisible = false; // hides the list initially
       scope.isCurrent = function(index) {
         return scope.current == index;
       };
@@ -115,7 +131,7 @@ app.directive('droppelion', function($timeout, $http, $filter) {
           return;
         }
         if(e.keyCode === 27 || e.keyCode === 9){ //ESC
-          scope.selected = true;
+          self.hideDropDown();
           return;
         }
         if(e.keyCode === 38) {  //UP
@@ -131,7 +147,7 @@ app.directive('droppelion', function($timeout, $http, $filter) {
             scope.current++;
         }
 
-        scope.selected = false;
+        scope.dropDownVisible = true;
       };
     },
     templateUrl: 'templates/droppelion.html'

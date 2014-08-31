@@ -34,14 +34,12 @@
       <div class="jumbotron">
         <h2>See it in action</h2>
 
-        <droppelion endpoint="'https://api.github.com/search/users'" traverse="items" control-id="countryId" prompt="Prompt text..." title="login" item="country" on-select="onItemSelected()" required />
+        <droppelion endpoint="'http://localhost:3000/api/products'" control-id="countryId" prompt="Prompt text..." title="name" item="country" on-select="onItemSelected(el)" required /> <!-- traverse="items"  -->
       </div>
 
       <div>
         Selected country:
-        <code>
-          {{countryPretty()}}
-        </code>
+        <pre>{{countryPretty()}}</pre>
       </div>
 
       <div class="row marketing">

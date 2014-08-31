@@ -4,14 +4,14 @@
     <a href="#" class="loading" ng-show="loading"></a>
   </div>
 
-  <div class="droppelion-drop" ng-hide="selected">
+  <div class="droppelion-drop" ng-show="dropDownVisible">
     <ul class="droppelion-results">
       <li class="item" ng-repeat="item in filteredItems track by $index" ng-click="handleSelection(item)" ng-class="{'highlighted':isCurrent($index)}" ng-mouseenter="setCurrent($index)" >
         <div class="title">{{item[title]}}</div>
       </li>
 
       <li class="item no-elements" ng-show="filteredItems.length == 0">
-        Nic nie znaleziono
+        Nothing found
       </li>
     </ul>
   </div>
