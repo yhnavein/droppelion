@@ -105,9 +105,18 @@ app.directive('droppelion', function($timeout, $http, $filter, $q) {
         scope.item = selectedItem;
         scope.itemName = selectedItem[scope.title];
         scope.current = 0;
+        scope.selected = true;
         self.hideDropDown();
-        scope.onSelect(selectedItem);
+        scope.onSelect();
       };
+
+      scope.clearSelection = function() {
+        scope.selected = false;
+        scope.item = {};
+        scope.itemName = '';
+        //elem.find('input').focus();
+      };
+
       scope.current = 0;
       scope.dropDownVisible = false; // hides the list initially
       scope.isCurrent = function(index) {

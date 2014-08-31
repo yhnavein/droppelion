@@ -38,7 +38,7 @@
       outline: 0;
       border-radius: 0;
     }
-    a.clear {
+    a.clear-selection {
       display: block;
       position: absolute;
       right: 0;
@@ -47,8 +47,7 @@
       color: #555;
       background: rgba(0,0,0,.1);
       padding: 0 4px;
-
-      i { line-height: 27px; }
+      line-height: 29px;
 
       &:hover {
         text-decoration: none;
@@ -149,7 +148,7 @@
     }
   }
 
-  &.closed {
+  &.selected {
     cursor: default;
     .box-shadow(inset 0 1px 1px rgba(0, 0, 0, 0.075));
     background: #efefef;
