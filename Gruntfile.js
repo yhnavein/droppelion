@@ -11,7 +11,16 @@ module.exports = function(grunt) {
         }
       }
     },
-
+    html2js: {
+      options: {
+        base: './',
+        module: 'droppelion'
+      },
+      main: {
+        src: ['templates/*.html'],
+        dest: 'droppelion.tpls.js'
+      },
+    },
     watch: {
       files: "less/*",
       tasks: ["less:dev"]
@@ -21,6 +30,7 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-html2js');
 
-  grunt.registerTask('default', ['less:dev']);
+  grunt.registerTask('default', ['less:dev', 'html2js']);
 };

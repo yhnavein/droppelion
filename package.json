@@ -6,15 +6,15 @@
     "start": "node app.js",
     "test": "karma start karma.conf.js --single-run --browsers PhantomJS"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
-    "karma": "latest",
     "grunt": "latest",
     "grunt-contrib-less": "latest",
     "grunt-contrib-watch": "latest",
-    "karma-jasmine": "latest",
+    "grunt-html2js": "^0.2.8",
+    "karma": "latest",
     "karma-chrome-launcher": "latest",
+    "karma-jasmine": "latest",
     "karma-phantomjs-launcher": "latest"
   }
 }
