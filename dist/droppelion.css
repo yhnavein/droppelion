@@ -1,0 +1,162 @@
+.droppelion {
+  vertical-align: middle;
+  background-color: #fff;
+  background: -moz-linear-gradient(top, #eeeeee 1%, #ffffff 15%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(1%, #eeeeee), color-stop(15%, #ffffff));
+  background: -webkit-linear-gradient(top, #eeeeee 1%, #ffffff 15%);
+  background: -o-linear-gradient(top, #eeeeee 1%, #ffffff 15%);
+  background: -ms-linear-gradient(top, #eeeeee 1%, #ffffff 15%);
+  background: linear-gradient(to bottom, #eeeeee 1%, #ffffff 15%);
+  border: 1px solid #aaa;
+  margin: 0;
+  padding: 0;
+  cursor: text;
+  position: relative;
+}
+.droppelion .search-field {
+  white-space: nowrap;
+  margin: 0;
+  padding: 0;
+  height: 29px;
+  overflow: hidden;
+}
+.droppelion .search-field input {
+  color: #666;
+  background: transparent !important;
+  border: 0 !important;
+  font-family: sans-serif;
+  font-size: 100%;
+  height: 30px;
+  padding: 5px;
+  margin: 0;
+  width: 100%;
+  outline: 0;
+  border-radius: 0;
+}
+.droppelion .search-field a.clear-selection {
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  color: #555;
+  background: rgba(0, 0, 0, 0.1);
+  padding: 0 4px;
+  line-height: 29px;
+}
+.droppelion .search-field a.clear-selection:hover {
+  text-decoration: none;
+  color: #222;
+  background: rgba(0, 0, 0, 0.2);
+}
+.droppelion .search-field a.loading {
+  display: block;
+  position: absolute;
+  right: 5px;
+  top: 8px;
+  width: 24px;
+  height: 13px;
+  font-size: 1px;
+  background: url('../fb-loading.gif') right top no-repeat;
+}
+.droppelion .droppelion-drop {
+  background: #fff;
+  border: 1px solid #aaa;
+  position: absolute;
+  top: 29px;
+  left: 0;
+  right: 0;
+  -webkit-box-shadow: 0 4px 5px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.15);
+  z-index: 999;
+  margin: 0 -1px 0 -1px;
+}
+.droppelion .droppelion-drop .droppelion-results {
+  margin: 0;
+  padding: 0;
+  max-height: 240px;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.droppelion .droppelion-drop .droppelion-results li {
+  line-height: 15px;
+  padding: 5px 6px;
+  margin: 0;
+  list-style: none;
+  text-align: left;
+  cursor: pointer;
+}
+.droppelion .droppelion-drop .droppelion-results li.highlighted {
+  background-image: -webkit-linear-gradient(top, #2a62bc 0%, #3875d7 100%);
+  background-image: -o-linear-gradient(top, #2a62bc 0%, #3875d7 100%);
+  background-image: linear-gradient(to bottom, #2a62bc 0%, #3875d7 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff2a62bc', endColorstr='#ff3875d7', GradientType=0);
+  color: #fff;
+}
+.droppelion .droppelion-drop .droppelion-results li.highlighted b.h {
+  color: #000;
+}
+.droppelion .droppelion-drop .droppelion-results li.highlighted em {
+  background: transparent;
+}
+.droppelion .droppelion-drop .droppelion-results li em {
+  background: #feffde;
+  font-style: normal;
+}
+.droppelion .droppelion-drop .droppelion-results li b.h {
+  background: #f5f514;
+  border: 1px solid #F0F000;
+  padding: 1px 2px;
+  border-radius: 2px;
+}
+.droppelion .droppelion-drop .droppelion-results li.no-elements {
+  cursor: default;
+  background: #efefef;
+  color: #555;
+  font-style: italic;
+}
+.droppelion .droppelion-drop .droppelion-results .active-result {
+  cursor: pointer;
+  display: list-item;
+}
+.droppelion .droppelion-drop .droppelion-results .no-results {
+  background: #f4f4f4;
+  display: list-item;
+}
+.droppelion .droppelion-drop .droppelion-results .new-record {
+  border-top: 1px solid #aaa;
+  cursor: pointer;
+  position: relative;
+  background-image: -webkit-linear-gradient(#eeeeee, #eeeeee 5%, #ffffff);
+  background-image: -o-linear-gradient(#eeeeee, #eeeeee 5%, #ffffff);
+  background-image: linear-gradient(#eeeeee, #eeeeee 5%, #ffffff);
+  background-repeat: no-repeat;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffeeeeee', endColorstr='#ffffffff', GradientType=0);
+}
+.droppelion .droppelion-drop .droppelion-results .new-record img {
+  position: absolute;
+  left: 4px;
+  top: 6px;
+}
+.droppelion.selected {
+  cursor: default;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  background: #efefef;
+  border-color: #DDD;
+}
+.droppelion.selected .search-field input {
+  cursor: default;
+  color: #888;
+}
+.droppelion.selected .droppelion-drop {
+  display: none;
+}
+.droppelion.drop-active {
+  border-color: #66afe9;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+}

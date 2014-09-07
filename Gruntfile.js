@@ -4,23 +4,49 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
 
-    less: {
+    uglify: {
       dev: {
+        options: {
+          mangle: false
+        },
         files: {
-          "css/droppelion.css": "less/droppelion.less"
+          'dist/droppelion.min.js': [
+            'droppelion.js'
+          ],
         }
       }
     },
+
+    less: {
+      dev: {
+        files: {
+          "dist/droppelion.css": "less/droppelion.less"
+        }
+      }
+    },
+
     html2js: {
       options: {
         base: './',
-        module: 'droppelion'
+        module: 'droppelion',
+        singleModule: true,
+        htmlmin: {
+          collapseBooleanAttributes: true,
+          collapseWhitespace: true,
+          removeAttributeQuotes: true,
+          removeComments: true,
+          removeEmptyAttributes: true,
+          removeRedundantAttributes: true,
+          removeScriptTypeAttributes: true,
+          removeStyleLinkTypeAttributes: true
+        }
       },
       main: {
         src: ['templates/*.html'],
-        dest: 'droppelion.tpls.js'
+        dest: 'dist/droppelion.tpls.js'
       },
     },
+
     watch: {
       files: "less/*",
       tasks: ["less:dev"]
@@ -30,7 +56,8 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-html2js');
 
-  grunt.registerTask('default', ['less:dev', 'html2js']);
+  grunt.registerTask('default', ['less:dev', 'html2js', 'uglify']);
 };
