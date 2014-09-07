@@ -25,7 +25,6 @@
   ],
   "ignore": [
     "docs",
-    "test",
-    "countries.json"
+    "test"
   ]
 }

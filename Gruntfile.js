@@ -29,17 +29,17 @@ module.exports = function(grunt) {
       options: {
         base: './',
         module: 'droppelion',
-        singleModule: true,
-        htmlmin: {
-          collapseBooleanAttributes: true,
-          collapseWhitespace: true,
-          removeAttributeQuotes: true,
-          removeComments: true,
-          removeEmptyAttributes: true,
-          removeRedundantAttributes: true,
-          removeScriptTypeAttributes: true,
-          removeStyleLinkTypeAttributes: true
-        }
+        singleModule: true//,
+        // htmlmin: {
+        //   collapseBooleanAttributes: true,
+        //   collapseWhitespace: true,
+        //   removeAttributeQuotes: true,
+        //   removeComments: true,
+        //   removeEmptyAttributes: true,
+        //   removeRedundantAttributes: true,
+        //   removeScriptTypeAttributes: true,
+        //   removeStyleLinkTypeAttributes: true
+        // }
       },
       main: {
         src: ['templates/*.html'],
