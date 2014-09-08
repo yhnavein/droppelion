@@ -17,4 +17,8 @@ app.controller('MainCtrl', function($scope, $http) {
     console.log('Item selection callback!');
   };
 
+  $scope.clearSelection = function() {
+    $scope.country = {};
+  };
+
 });

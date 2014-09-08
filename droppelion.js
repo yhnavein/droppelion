@@ -29,6 +29,12 @@ app.directive('droppelion', function($timeout, $http, $filter, $q) {
         });
       }
 
+      scope.$watch('item', function() {
+        if(scope.selected && !angular.equals( scope.item, self.selItem )){
+          scope.clearSelection();
+        }
+      });
+
       self.hideDropDown = function() {
         self.cancelActiveRequest();
         scope.loading = false;
@@ -39,7 +45,7 @@ app.directive('droppelion', function($timeout, $http, $filter, $q) {
       self.cancelActiveRequest = function() {
         if(self.canceler)
           self.canceler.resolve();
-      }
+      };
 
       self.getItems = function(data) {
         var dataToShow = (scope.traverse ? data[scope.traverse] : data);
@@ -101,7 +107,7 @@ app.directive('droppelion', function($timeout, $http, $filter, $q) {
           selectedItem = scope.filteredItems[scope.current];
         }
         console.log('Sel item: ' + selectedItem);
-        console.log('Current ' + scope.current);
+        self.selItem = angular.copy(selectedItem);
         scope.item = selectedItem;
         scope.itemName = selectedItem[scope.title];
         scope.current = 0;
@@ -114,7 +120,6 @@ app.directive('droppelion', function($timeout, $http, $filter, $q) {
         scope.selected = false;
         scope.item = {};
         scope.itemName = '';
-        //elem.find('input').focus();
       };
 
       scope.current = 0;
