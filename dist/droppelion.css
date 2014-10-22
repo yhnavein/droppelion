@@ -117,6 +117,9 @@
   color: #555;
   font-style: italic;
 }
+.droppelion .droppelion-drop .droppelion-results li.new-item {
+  border-top: 1px solid #ddd;
+}
 .droppelion .droppelion-drop .droppelion-results .active-result {
   cursor: pointer;
   display: list-item;

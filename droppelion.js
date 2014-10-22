@@ -1,7 +1,7 @@
 /*global console:false, topojson:false, queue:false, d3:false */
 var app = angular.module('droppelion', []);
 
-app.directive('droppelion', function($timeout, $http, $filter, $q) {
+app.directive('droppelion', function($timeout, $http, $filter, $q, $document) {
   return {
     restrict: 'E',
     transclude: true,
@@ -136,7 +136,8 @@ app.directive('droppelion', function($timeout, $http, $filter, $q) {
 
         self.makeSearchRequest(scope.itemName);
       };
-      scope.keyPressed = function(e) {
+
+      $document.on('keydown keypress paste', function (e) {
         if(scope.filteredItems == null)
           return;
 
@@ -162,7 +163,7 @@ app.directive('droppelion', function($timeout, $http, $filter, $q) {
         }
 
         scope.dropDownVisible = true;
-      };
+      });
     },
     templateUrl: 'templates/droppelion.html'
   };

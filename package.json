@@ -9,6 +9,7 @@
   "dependencies": {},
   "devDependencies": {
     "grunt": "latest",
+    "grunt-angular-templates": "^0.5.7",
     "grunt-contrib-less": "latest",
     "grunt-contrib-uglify": "^0.4.1",
     "grunt-contrib-watch": "latest",
