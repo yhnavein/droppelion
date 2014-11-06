@@ -12,9 +12,11 @@ app.directive('droppelion', function($timeout, $http, $filter, $q, $document) {
       traverse: '@',
       prompt: '@',
       item: '=',
+      api: '=',
       controlId: '@',
       title: '@',
-      onSelect: '&'
+      onSelect: '&',
+      onNewItemSelect: '&'
     },
     link: function(scope, elem, attrs) {
       var self = {};
@@ -122,6 +124,11 @@ app.directive('droppelion', function($timeout, $http, $filter, $q, $document) {
         scope.itemName = '';
       };
 
+      scope.newItemClicked = function(name) {
+        if(scope.onNewItemSelect != null && typeof scope.onNewItemSelect === 'function')
+          scope.onNewItemSelect();
+      };
+
       scope.current = 0;
       scope.dropDownVisible = false; // hides the list initially
       scope.isCurrent = function(index) {
@@ -135,6 +142,10 @@ app.directive('droppelion', function($timeout, $http, $filter, $q, $document) {
           return;
 
         self.makeSearchRequest(scope.itemName);
+      };
+
+      scope.api = {
+        selectItem: scope.handleSelection
       };
 
       $document.on('keydown keypress paste', function (e) {
@@ -161,7 +172,7 @@ app.directive('droppelion', function($timeout, $http, $filter, $q, $document) {
           else
             scope.current++;
         }
-
+        scope.$apply();
         scope.dropDownVisible = true;
       });
     },

@@ -9,8 +9,12 @@ app.controller('MainCtrl', function($scope, $http) {
     self.refreshData();
   };
 
-  $scope.countryPretty = function() {
-    return JSON.stringify($scope.country, null, 2);
+  $scope.openProductsModal = function() {
+    console.log('Something is happening.');
+
+    $scope.productApi.selectItem({
+      id: 123, name: 'Jack Daniels'
+    });
   };
 
   $scope.onItemSelected = function() {
@@ -18,7 +22,7 @@ app.controller('MainCtrl', function($scope, $http) {
   };
 
   $scope.clearSelection = function() {
-    $scope.country = {};
+    $scope.product = {};
   };
 
 });

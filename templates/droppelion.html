@@ -1,6 +1,6 @@
-<div class="droppelion" ng-class="{ 'drop-active': focused, 'selected': selected }">
+<div class="droppelion" ng-class="{ 'drop-active': focused, 'selected': selected }"  ng-blur="blur()">
   <div class="search-field">
-    <input type="text" autocomplete="off" id="{{controlId}}" class="form-control" ng-model="itemName" placeholder="{{prompt}}" ng-focus="focused = true" ng-blur="blur()" ng-change="changedSearch()" ng-disabled="selected"/>
+    <input type="text" autocomplete="off" id="{{controlId}}" class="form-control" ng-model="itemName" placeholder="{{prompt}}" ng-focus="focused = true" ng-change="changedSearch()" ng-disabled="selected"/>
     <a href="#" class="loading" ng-show="loading"></a>
     <a href="#" class="clear-selection" ng-show="selected" ng-click="clearSelection()">
       ✖
@@ -13,11 +13,7 @@
         <div class="title">{{item[title]}}</div>
       </li>
 
-      <li class="item no-elements" ng-show="filteredItems.length == 0">
-        Nothing found
-      </li>
-
-      <li class="item new-item" ng-class="{'highlighted':isCurrent(-1)}" ng-mouseenter="setCurrent(-1)">
+      <li class="item new-item" ng-class="{'highlighted':isCurrent(-1)}" ng-mouseenter="setCurrent(-1)" ng-click="newItemClicked(itemName)">
         <i class="fa fa-plus"></i> Add new item: <b>{{itemName}}</b>
       </li>
     </ul>

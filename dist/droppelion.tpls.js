@@ -2,9 +2,9 @@ angular.module('droppelion').run(['$templateCache', function($templateCache) {
   'use strict';
 
   $templateCache.put('templates/droppelion.html',
-    "<div class=\"droppelion\" ng-class=\"{ 'drop-active': focused, 'selected': selected }\">\n" +
+    "<div class=\"droppelion\" ng-class=\"{ 'drop-active': focused, 'selected': selected }\"  ng-blur=\"blur()\">\n" +
     "  <div class=\"search-field\">\n" +
-    "    <input type=\"text\" autocomplete=\"off\" id=\"{{controlId}}\" class=\"form-control\" ng-model=\"itemName\" placeholder=\"{{prompt}}\" ng-focus=\"focused = true\" ng-blur=\"blur()\" ng-change=\"changedSearch()\" ng-disabled=\"selected\"/>\n" +
+    "    <input type=\"text\" autocomplete=\"off\" id=\"{{controlId}}\" class=\"form-control\" ng-model=\"itemName\" placeholder=\"{{prompt}}\" ng-focus=\"focused = true\" ng-change=\"changedSearch()\" ng-disabled=\"selected\"/>\n" +
     "    <a href=\"#\" class=\"loading\" ng-show=\"loading\"></a>\n" +
     "    <a href=\"#\" class=\"clear-selection\" ng-show=\"selected\" ng-click=\"clearSelection()\">\n" +
     "      ✖\n" +
@@ -17,11 +17,7 @@ angular.module('droppelion').run(['$templateCache', function($templateCache) {
     "        <div class=\"title\">{{item[title]}}</div>\n" +
     "      </li>\n" +
     "\n" +
-    "      <li class=\"item no-elements\" ng-show=\"filteredItems.length == 0\">\n" +
-    "        Nothing found\n" +
-    "      </li>\n" +
-    "\n" +
-    "      <li class=\"item new-item\" ng-class=\"{'highlighted':isCurrent(-1)}\" ng-mouseenter=\"setCurrent(-1)\">\n" +
+    "      <li class=\"item new-item\" ng-class=\"{'highlighted':isCurrent(-1)}\" ng-mouseenter=\"setCurrent(-1)\" ng-click=\"newItemClicked(itemName)\">\n" +
     "        <i class=\"fa fa-plus\"></i> Add new item: <b>{{itemName}}</b>\n" +
     "      </li>\n" +
     "    </ul>\n" +
