@@ -3,8 +3,10 @@
   "version": "0.0.1",
   "dependencies": {
     "angular": "latest",
-    "angular-mocks": "latest",
-    "jquery": "1.*",
-    "bootstrap": "3.*"
+    "jquery": "1.11.*",
+    "bootstrap": "3.3.*"
+  },
+  "devDependencies" : {
+    "angular-mocks": "latest"
   }
 }

@@ -78,3 +78,22 @@ body {
     border-bottom: 0;
   }
 }
+
+
+
+
+
+
+.product-modal {
+  position: fixed;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: rgba(255,255,255,0.5);
+}
+.product-modal .modal-dialog {
+  margin: 70px auto;
+  width: 300px;
+  background: #fff;
+  border: 1px solid #eee;
+  box-shadow: 0 0 12px rgba(0,0,0,.1);
+  border-radius: 6px;
+}

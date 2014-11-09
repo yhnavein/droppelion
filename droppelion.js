@@ -104,18 +104,18 @@ app.directive('droppelion', function($timeout, $http, $filter, $q, $document) {
         if(!isChild) {
           scope.$apply(function() {
             scope.focused = false;
-            scope.clearSelection();
             self.hideDropDown();
           });
         }
       });
 
       scope.handleSelection = function(selectedItem) {
-        console.log('Selection');
         if(selectedItem == null){
           selectedItem = scope.filteredItems[scope.current];
+
+          if(selectedItem == null)
+            return;
         }
-        console.log('Sel item: ' + selectedItem);
         self.selItem = angular.copy(selectedItem);
         scope.item = selectedItem;
         scope.itemName = selectedItem[scope.title];
@@ -132,6 +132,7 @@ app.directive('droppelion', function($timeout, $http, $filter, $q, $document) {
       };
 
       scope.newItemClicked = function(name) {
+        self.hideDropDown();
         if(scope.onNewItemSelect != null && typeof scope.onNewItemSelect === 'function')
           scope.onNewItemSelect();
       };
@@ -152,10 +153,13 @@ app.directive('droppelion', function($timeout, $http, $filter, $q, $document) {
       };
 
       scope.api = {
-        selectItem: scope.handleSelection
+        selectItem: scope.handleSelection,
+        itemName: function() {
+          return scope.itemName;
+        }
       };
 
-      $document.on('keydown keypress paste', function (e) {
+      elem.on('keydown keypress paste', function (e) {
         if(scope.filteredItems == null)
           return;
 

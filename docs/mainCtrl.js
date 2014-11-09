@@ -1,8 +1,10 @@
 /*global console:false*/
 var app = angular.module('test', ['droppelion']);
 
-app.controller('MainCtrl', function($scope, $http) {
+app.controller('MainCtrl', function($scope, $http, $timeout) {
   var self = this;
+
+  $scope.newProd = null;
 
   $scope.search = function() {
 
@@ -12,17 +14,27 @@ app.controller('MainCtrl', function($scope, $http) {
   $scope.openProductsModal = function() {
     console.log('Something is happening.');
 
+    var prodName = $scope.productApi.itemName();
+
+    $scope.newProd = {
+      name: prodName,
+      producer: '',
+      code: ''
+    };
+
     $scope.prodModalVisible = true;
+    $timeout(function() {
+      angular.element('.product-modal .form-control:first').focus();
+    }, 50);
   };
 
   $scope.acceptProduct = function() {
-    var item = newProd;
-    $scope.productApi.selectItem(item);
+    $scope.productApi.selectItem($scope.newProd);
     $scope.prodModalVisible = false;
   };
 
   $scope.discardProduct = function() {
-    $scope.product = {};
+    $scope.product = null;
     $scope.prodModalVisible = false;
   };
 
