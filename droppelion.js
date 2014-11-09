@@ -133,6 +133,9 @@ app.directive('droppelion', function($timeout, $http, $filter, $q, $document) {
 
       scope.newItemClicked = function(name) {
         self.hideDropDown();
+        scope.focused = false;
+        self.hideDropDown();
+
         if(scope.onNewItemSelect != null && typeof scope.onNewItemSelect === 'function')
           scope.onNewItemSelect();
       };

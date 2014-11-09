@@ -2,7 +2,7 @@ angular.module('droppelion').run(['$templateCache', function($templateCache) {
   'use strict';
 
   $templateCache.put('templates/droppelion.html',
-    "<div class=\"droppelion\" ng-class=\"{ 'drop-active': focused, 'selected': selected }\"  ng-blur=\"blur()\">\n" +
+    "<div class=\"droppelion\" ng-class=\"{ 'drop-active': focused, 'selected': selected }\">\n" +
     "  <div class=\"search-field\">\n" +
     "    <input type=\"text\" autocomplete=\"off\" id=\"{{controlId}}\" class=\"form-control\" ng-model=\"itemName\" placeholder=\"{{prompt}}\" ng-focus=\"focused = true\" ng-change=\"changedSearch()\" ng-disabled=\"selected\"/>\n" +
     "    <a href=\"#\" class=\"loading\" ng-show=\"loading\"></a>\n" +
