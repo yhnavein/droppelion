@@ -12,9 +12,18 @@ app.controller('MainCtrl', function($scope, $http) {
   $scope.openProductsModal = function() {
     console.log('Something is happening.');
 
-    $scope.productApi.selectItem({
-      id: 123, name: 'Jack Daniels'
-    });
+    $scope.prodModalVisible = true;
+  };
+
+  $scope.acceptProduct = function() {
+    var item = newProd;
+    $scope.productApi.selectItem(item);
+    $scope.prodModalVisible = false;
+  };
+
+  $scope.discardProduct = function() {
+    $scope.product = {};
+    $scope.prodModalVisible = false;
   };
 
   $scope.onItemSelected = function() {

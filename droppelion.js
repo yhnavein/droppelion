@@ -97,14 +97,21 @@ app.directive('droppelion', function($timeout, $http, $filter, $q, $document) {
           .error(self.logQueryError);
       }
 
-      scope.blur = function() {
-        $timeout(function(){
-          scope.focused = false;
-          self.hideDropDown();
-        }, 100);
-      };
+      //custom blur
+      $document.on('click', function(ev) {
+        var isChild = elem.find(ev.target).length > 0;
+
+        if(!isChild) {
+          scope.$apply(function() {
+            scope.focused = false;
+            scope.clearSelection();
+            self.hideDropDown();
+          });
+        }
+      });
 
       scope.handleSelection = function(selectedItem) {
+        console.log('Selection');
         if(selectedItem == null){
           selectedItem = scope.filteredItems[scope.current];
         }
@@ -176,6 +183,6 @@ app.directive('droppelion', function($timeout, $http, $filter, $q, $document) {
         scope.dropDownVisible = true;
       });
     },
-    templateUrl: 'templates/droppelion.html'
+    templateUrl: '/templates/droppelion.html'
   };
 });
