@@ -9,7 +9,7 @@
 
   <div class="droppelion-drop" ng-show="dropDownVisible">
     <div class="droppelion-list">
-      <ul class="droppelion-results">
+      <ul class="droppelion-results" spy-scroll>
         <li class="item" ng-repeat="item in filteredItems track by $index" ng-click="handleSelection(item)" ng-class="{'highlighted':isCurrent($index)}" ng-mouseenter="setCurrent($index)" >
           <div class="title">{{item[title]}}</div>
         </li>

@@ -13,7 +13,7 @@ angular.module('droppelion').run(['$templateCache', function($templateCache) {
     "\n" +
     "  <div class=\"droppelion-drop\" ng-show=\"dropDownVisible\">\n" +
     "    <div class=\"droppelion-list\">\n" +
-    "      <ul class=\"droppelion-results\">\n" +
+    "      <ul class=\"droppelion-results\" spy-scroll>\n" +
     "        <li class=\"item\" ng-repeat=\"item in filteredItems track by $index\" ng-click=\"handleSelection(item)\" ng-class=\"{'highlighted':isCurrent($index)}\" ng-mouseenter=\"setCurrent($index)\" >\n" +
     "          <div class=\"title\">{{item[title]}}</div>\n" +
     "        </li>\n" +

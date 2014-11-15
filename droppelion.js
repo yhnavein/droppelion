@@ -162,23 +162,6 @@ app.directive('droppelion', function($timeout, $http, $filter, $q, $document) {
         }
       };
 
-      function updateScroll() {
-        var el = elem.find('.item').eq(scope.current);
-        var list = elem.find('.droppelion-results');
-        var elTop = el.position().top;
-        var elBottom = elTop + el.outerHeight();
-        var scrollTop = list.scrollTop();
-        var resHeight = list.outerHeight();
-
-        if(elTop < 0)
-          list.scrollTop(scrollTop + elTop);
-
-        if(elBottom > resHeight)
-          list.scrollTop(scrollTop + elBottom - resHeight);
-
-        console.log(el);
-      }
-
       elem.on('keydown keypress paste', function (e) {
         if(scope.filteredItems == null)
           return;
@@ -196,21 +179,48 @@ app.directive('droppelion', function($timeout, $http, $filter, $q, $document) {
             scope.current = scope.filteredItems.length-1;
           else
             scope.current--;
-
-          updateScroll();
         }
         else if(e.keyCode === 40) {//DOWN
           if(scope.current === scope.filteredItems.length-1)
             scope.current = 0;
           else
             scope.current++;
-
-          updateScroll();
         }
         scope.$apply();
         scope.dropDownVisible = true;
       });
     },
     templateUrl: '/templates/droppelion.html'
+  };
+});
+
+app.directive('spyScroll', function(){
+  function updateScroll($list, index) {
+    var el = $list.children().eq(index);
+    if(el == null || el.length === 0){
+      $list.scrollTop(0);
+      return;
+    }
+
+    var elTop = el.position().top;
+    var elBottom = elTop + el.outerHeight();
+    var scrollTop = $list.scrollTop();
+    var resHeight = $list.outerHeight();
+
+    if(elTop < 0)
+      $list.scrollTop(scrollTop + elTop);
+
+    if(elBottom > resHeight)
+      $list.scrollTop(scrollTop + elBottom - resHeight);
+  }
+
+  return {
+    restrict: 'A',
+    link: function(scope, element, attrs) {
+      scope.$watch('current', function (newVal, oldVal) {
+        if(newVal != oldVal)
+          updateScroll(element, newVal);
+      });
+    }
   };
 });
