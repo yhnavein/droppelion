@@ -8,14 +8,15 @@
   </div>
 
   <div class="droppelion-drop" ng-show="dropDownVisible">
-    <ul class="droppelion-results">
-      <li class="item" ng-repeat="item in filteredItems track by $index" ng-click="handleSelection(item)" ng-class="{'highlighted':isCurrent($index)}" ng-mouseenter="setCurrent($index)" >
-        <div class="title">{{item[title]}}</div>
-      </li>
-
-      <li class="item new-item" ng-class="{'highlighted':isCurrent(-1)}" ng-mouseenter="setCurrent(-1)" ng-click="newItemClicked(itemName)">
+    <div class="droppelion-list">
+      <ul class="droppelion-results">
+        <li class="item" ng-repeat="item in filteredItems track by $index" ng-click="handleSelection(item)" ng-class="{'highlighted':isCurrent($index)}" ng-mouseenter="setCurrent($index)" >
+          <div class="title">{{item[title]}}</div>
+        </li>
+      </ul>
+      <div class="item new-item" ng-class="{'highlighted':isCurrent(-1)}" ng-mouseenter="setCurrent(-1)" ng-click="newItemClicked(itemName)">
         <i class="fa fa-plus"></i> Add new item: <b>{{itemName}}</b>
-      </li>
-    </ul>
+      </div>
+    </div>
   </div>
 </div>

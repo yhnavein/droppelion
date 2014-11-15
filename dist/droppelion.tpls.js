@@ -12,15 +12,16 @@ angular.module('droppelion').run(['$templateCache', function($templateCache) {
     "  </div>\n" +
     "\n" +
     "  <div class=\"droppelion-drop\" ng-show=\"dropDownVisible\">\n" +
-    "    <ul class=\"droppelion-results\">\n" +
-    "      <li class=\"item\" ng-repeat=\"item in filteredItems track by $index\" ng-click=\"handleSelection(item)\" ng-class=\"{'highlighted':isCurrent($index)}\" ng-mouseenter=\"setCurrent($index)\" >\n" +
-    "        <div class=\"title\">{{item[title]}}</div>\n" +
-    "      </li>\n" +
-    "\n" +
-    "      <li class=\"item new-item\" ng-class=\"{'highlighted':isCurrent(-1)}\" ng-mouseenter=\"setCurrent(-1)\" ng-click=\"newItemClicked(itemName)\">\n" +
+    "    <div class=\"droppelion-list\">\n" +
+    "      <ul class=\"droppelion-results\">\n" +
+    "        <li class=\"item\" ng-repeat=\"item in filteredItems track by $index\" ng-click=\"handleSelection(item)\" ng-class=\"{'highlighted':isCurrent($index)}\" ng-mouseenter=\"setCurrent($index)\" >\n" +
+    "          <div class=\"title\">{{item[title]}}</div>\n" +
+    "        </li>\n" +
+    "      </ul>\n" +
+    "      <div class=\"item new-item\" ng-class=\"{'highlighted':isCurrent(-1)}\" ng-mouseenter=\"setCurrent(-1)\" ng-click=\"newItemClicked(itemName)\">\n" +
     "        <i class=\"fa fa-plus\"></i> Add new item: <b>{{itemName}}</b>\n" +
-    "      </li>\n" +
-    "    </ul>\n" +
+    "      </div>\n" +
+    "    </div>\n" +
     "  </div>\n" +
     "</div>"
   );
