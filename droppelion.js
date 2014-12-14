@@ -170,7 +170,7 @@ app.directive('droppelion', function($timeout, $http, $filter, $q, $document) {
           scope.handleSelection(null);
           return;
         }
-        if(e.keyCode === 27 || e.keyCode === 9) { //ESC
+        if(e.keyCode === 27) { //ESC
           self.hideDropDown();
           return;
         }
