@@ -1,10 +1,10 @@
 <div class="droppelion" ng-class="{ 'drop-active': focused, 'selected': selected }">
   <div class="search-field">
     <input type="text" autocomplete="off" id="{{controlId}}" class="form-control" ng-model="itemName" placeholder="{{prompt}}" ng-focus="focused = true" ng-change="changedSearch()" ng-disabled="selected"/>
-    <a href="#" class="loading" ng-show="loading"></a>
-    <a href="#" class="clear-selection" ng-show="selected" ng-click="clearSelection()">
+    <span class="loading" ng-show="loading"></span>
+    <span class="clear-selection" ng-show="selected" ng-click="clearSelection()">
       ✖
-    </a>
+    </span>
   </div>
 
   <div class="droppelion-drop" ng-show="dropDownVisible">

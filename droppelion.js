@@ -163,6 +163,13 @@ app.directive('droppelion', function($timeout, $http, $filter, $q, $document) {
       };
 
       elem.on('keydown keypress paste', function (e) {
+        if(e.keyCode === 9) { //TAB
+          scope.focused = false;
+          self.hideDropDown();
+          scope.$apply();
+          return;
+        }
+
         if(scope.filteredItems == null)
           return;
 
@@ -185,11 +192,6 @@ app.directive('droppelion', function($timeout, $http, $filter, $q, $document) {
             scope.current = 0;
           else
             scope.current++;
-        }
-        else if(e.keyCode === 9) { //TAB
-          scope.focused = false;
-          self.hideDropDown();
-          return;
         }
         scope.$apply();
         scope.dropDownVisible = true;

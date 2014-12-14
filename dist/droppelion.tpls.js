@@ -5,10 +5,10 @@ angular.module('droppelion').run(['$templateCache', function($templateCache) {
     "<div class=\"droppelion\" ng-class=\"{ 'drop-active': focused, 'selected': selected }\">\n" +
     "  <div class=\"search-field\">\n" +
     "    <input type=\"text\" autocomplete=\"off\" id=\"{{controlId}}\" class=\"form-control\" ng-model=\"itemName\" placeholder=\"{{prompt}}\" ng-focus=\"focused = true\" ng-change=\"changedSearch()\" ng-disabled=\"selected\"/>\n" +
-    "    <a href=\"#\" class=\"loading\" ng-show=\"loading\"></a>\n" +
-    "    <a href=\"#\" class=\"clear-selection\" ng-show=\"selected\" ng-click=\"clearSelection()\">\n" +
+    "    <span class=\"loading\" ng-show=\"loading\"></span>\n" +
+    "    <span class=\"clear-selection\" ng-show=\"selected\" ng-click=\"clearSelection()\">\n" +
     "      ✖\n" +
-    "    </a>\n" +
+    "    </span>\n" +
     "  </div>\n" +
     "\n" +
     "  <div class=\"droppelion-drop\" ng-show=\"dropDownVisible\">\n" +

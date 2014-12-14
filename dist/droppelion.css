@@ -28,7 +28,7 @@
   outline: 0;
   border-radius: 0;
 }
-.droppelion .search-field a.clear-selection {
+.droppelion .search-field .clear-selection {
   display: block;
   position: absolute;
   right: 0;
@@ -39,12 +39,12 @@
   padding: 0 4px;
   line-height: 29px;
 }
-.droppelion .search-field a.clear-selection:hover {
+.droppelion .search-field .clear-selection:hover {
   text-decoration: none;
   color: #222;
   background: rgba(0, 0, 0, 0.2);
 }
-.droppelion .search-field a.loading {
+.droppelion .search-field .loading {
   display: block;
   position: absolute;
   right: 5px;
