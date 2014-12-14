@@ -2,9 +2,9 @@
   "name": "droppelion",
   "version": "0.0.1",
   "dependencies": {
-    "angular": "latest",
+    "angular": "1.*",
     "jquery": "1.11.*",
-    "bootstrap": "3.3.*"
+    "bootstrap": "3.*"
   },
   "devDependencies" : {
     "angular-mocks": "latest"
