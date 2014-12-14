@@ -166,25 +166,30 @@ app.directive('droppelion', function($timeout, $http, $filter, $q, $document) {
         if(scope.filteredItems == null)
           return;
 
-        if(e.keyCode === 13){ //ENTER
+        if(e.keyCode === 13) { //ENTER
           scope.handleSelection(null);
           return;
         }
-        if(e.keyCode === 27 || e.keyCode === 9){ //ESC
+        if(e.keyCode === 27 || e.keyCode === 9) { //ESC
           self.hideDropDown();
           return;
         }
-        if(e.keyCode === 38) {  //UP
+        if(e.keyCode === 38) { //UP
           if(scope.current === 0)
-            scope.current = scope.filteredItems.length-1;
+            scope.current = scope.filteredItems.length - 1;
           else
             scope.current--;
         }
-        else if(e.keyCode === 40) {//DOWN
-          if(scope.current === scope.filteredItems.length-1)
+        else if(e.keyCode === 40) { //DOWN
+          if(scope.current === scope.filteredItems.length - 1)
             scope.current = 0;
           else
             scope.current++;
+        }
+        else if(e.keyCode === 9) { //TAB
+          scope.focused = false;
+          self.hideDropDown();
+          return;
         }
         scope.$apply();
         scope.dropDownVisible = true;
