@@ -1,7 +1,7 @@
-/*global console:false, topojson:false, queue:false, d3:false */
+/*global console:false */
 var app = angular.module('droppelion', []);
 
-app.directive('droppelion', function($timeout, $http, $filter, $q, $document) {
+app.directive('droppelion', function($timeout, $http, $filter, $document) {
   return {
     restrict: 'E',
     transclude: true,
@@ -21,11 +21,8 @@ app.directive('droppelion', function($timeout, $http, $filter, $q, $document) {
     link: function(scope, elem, attrs) {
       var self = {};
 
-      if(!attrs.dynamic) attrs.dynamic = true;
-      if(typeof attrs.dynamic === 'string')
-        attrs.dynamic = attrs.dynamic.toLowerCase() === 'true';
-
-      if(attrs.dynamic){
+      if(!scope.dynamic) scope.dynamic = true;
+      if(scope.dynamic){
         scope.$watch('itemName', function() {
           scope.filteredItems = $filter('filter')(scope.items, scope.itemName);
         });
@@ -90,7 +87,7 @@ app.directive('droppelion', function($timeout, $http, $filter, $q, $document) {
         }, 200);
       };
 
-      if(!attrs.dynamic) {
+      if(!scope.dynamic) {
         scope.loading = true;
         $http.get(scope.endpoint)
           .success(self.getItems)
@@ -149,7 +146,7 @@ app.directive('droppelion', function($timeout, $http, $filter, $q, $document) {
         scope.current = index;
       };
       scope.changedSearch = function() {
-        if(!attrs.dynamic)
+        if(!scope.dynamic)
           return;
 
         self.makeSearchRequest(scope.itemName);
