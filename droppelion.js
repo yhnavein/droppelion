@@ -154,6 +154,7 @@ app.directive('droppelion', function($timeout, $http, $filter, $document) {
 
       scope.api = {
         selectItem: scope.handleSelection,
+        clear: scope.clearSelection,
         itemName: function() {
           return scope.itemName;
         }
