@@ -7,13 +7,11 @@ app.directive('droppelion', function($timeout, $http, $filter, $document) {
     transclude: true,
     replace: true,
     scope: {
-      dynamic: '=',
       endpoint: '=',
       traverse: '@',
       prompt: '@',
       item: '=',
       api: '=',
-      controlId: '@',
       title: '@',
       onSelect: '&',
       onNewItemSelect: '&'
@@ -21,12 +19,9 @@ app.directive('droppelion', function($timeout, $http, $filter, $document) {
     link: function(scope, elem, attrs) {
       var self = {};
 
-      if(!scope.dynamic) scope.dynamic = true;
-      if(scope.dynamic){
-        scope.$watch('itemName', function() {
-          scope.filteredItems = $filter('filter')(scope.items, scope.itemName);
-        });
-      }
+      scope.$watch('itemName', function() {
+        scope.filteredItems = $filter('filter')(scope.items, scope.itemName);
+      });
 
       scope.$watch('item', function() {
         if(scope.selected && !angular.equals( scope.item, self.selItem )){
@@ -87,13 +82,6 @@ app.directive('droppelion', function($timeout, $http, $filter, $document) {
         }, 200);
       };
 
-      if(!scope.dynamic) {
-        scope.loading = true;
-        $http.get(scope.endpoint)
-          .success(self.getItems)
-          .error(self.logQueryError);
-      }
-
       //custom blur
       $document.on('click', function(ev) {
         var isChild = elem.find(ev.target).length > 0;
@@ -146,9 +134,6 @@ app.directive('droppelion', function($timeout, $http, $filter, $document) {
         scope.current = index;
       };
       scope.changedSearch = function() {
-        if(!scope.dynamic)
-          return;
-
         self.makeSearchRequest(scope.itemName);
       };
 

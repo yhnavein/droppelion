@@ -34,7 +34,7 @@
       <div class="jumbotron">
         <h2>See it in action</h2>
 
-        <droppelion endpoint="'http://localhost:3000/api/products'" control-id="countryId" prompt="Prompt text..." title="name" item="product" on-select="onItemSelected()" required on-new-item-select="openProductsModal()" api="productApi" /> <!-- traverse="items"  -->
+        <droppelion endpoint="'http://localhost:3000/api/products'" prompt="Select product..." title="name" item="product" on-select="onItemSelected()" required on-new-item-select="openProductsModal()" api="productApi" traverse="null" /> <!-- traverse="items"  -->
       </div>
 
       <div>
@@ -88,7 +88,7 @@
 
     <script src="../bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>
     <script src="../bower_components/angular/angular.min.js" type="text/javascript"></script>
-    <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js" type="text/javascript"></script>
+    <!-- <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js" type="text/javascript"></script> -->
     <script src="../droppelion.js" type="text/javascript"></script>
     <script src="mainCtrl.js" type="text/javascript"></script>
 
