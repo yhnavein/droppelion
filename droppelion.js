@@ -1,7 +1,8 @@
 /*global console:false */
 var app = angular.module('droppelion', []);
 
-app.directive('droppelion', function($timeout, $http, $filter, $document) {
+app.directive('droppelion', ['$timeout', '$http', '$filter', '$document', '$q',
+function($timeout, $http, $filter, $document, $q) {
   return {
     restrict: 'E',
     transclude: true,
@@ -182,7 +183,7 @@ app.directive('droppelion', function($timeout, $http, $filter, $document) {
     },
     templateUrl: '/templates/droppelion.html'
   };
-});
+}]);
 
 app.directive('spyScroll', function(){
   function updateScroll($list, index) {
