@@ -14,7 +14,7 @@ function($timeout, $http, $filter, $document, $q) {
       item: '=',
       api: '=',
       title: '@',
-      tabindex: '@',
+      customIndex: '@',
       onSelect: '&',
       onNewItemSelect: '&'
     },
